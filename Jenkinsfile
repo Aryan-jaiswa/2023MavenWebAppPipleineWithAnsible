@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        maven 'Maven3'   // ✅ make sure this matches Jenkins
+        maven 'Maven3'   // make sure this matches Jenkins
     }
 
     stages {
@@ -21,6 +21,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean package'
+            }
+        }
+
+        // ✅ DEBUG STAGE ADDED HERE
+        stage('Debug') {
+            steps {
+                sh 'pwd'
+                sh 'ls -l target'
             }
         }
 
