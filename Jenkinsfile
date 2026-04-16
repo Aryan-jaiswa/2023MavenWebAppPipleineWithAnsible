@@ -14,7 +14,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Hemavathipcse/MavenAnsibleWebApp.git'
+                git branch: 'master', url: 'https://github.com/Aryan-jaiswa/2023MavenWebAppPipleineWithAnsible'
             }
         }
 
