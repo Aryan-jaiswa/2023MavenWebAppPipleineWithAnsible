@@ -1,6 +1,7 @@
 - name: Deploy to Tomcat
   hosts: web
   become: yes
+<<<<<<< HEAD
 
   tasks:
     - name: Copy WAR file to Tomcat
@@ -12,3 +13,16 @@
       shell: |
         /opt/tomcat/bin/shutdown.sh || true
         /opt/tomcat/bin/startup.sh
+=======
+  tasks: 
+   - name: copy WAR file to Tomcat
+     copy:
+     src: "target/2023mavenWebAppPipelineWithAnsible.war "
+     dest: "/opt/tomcat/webapps/2023MavenWebAppPipelineWithAnsible.war"
+     remote_src: no
+     
+   - name: Restart Tomcat
+     systemd: 
+       name: tomcat
+       state: restarted
+>>>>>>> c969458 (final)
