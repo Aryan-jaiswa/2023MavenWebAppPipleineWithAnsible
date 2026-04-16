@@ -1,17 +1,17 @@
 pipeline {
     agent any
-    
+
     environment {
         LANG = 'en_US.UTF-8'
         LC_ALL = 'en_US.UTF-8'
     }
 
     tools {
-        maven 'Maven3'   // 🔥 Change this to your actual Jenkins Maven name
+        maven 'Maven3'   // ✅ make sure this matches Jenkins
     }
 
     stages {
-        
+
         stage('Checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/Hemavathipcse/MavenAnsibleWebApp.git'
