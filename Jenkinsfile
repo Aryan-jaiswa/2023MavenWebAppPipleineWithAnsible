@@ -1,20 +1,20 @@
 pipeline {
     agent any
 
-    environment {
-        LANG = 'en_US.UTF-8'
-        LC_ALL = 'en_US.UTF-8'
+    options {
+        skipDefaultCheckout(true)
     }
 
     tools {
-        maven 'Maven3'   // make sure this matches Jenkins
+        maven 'Maven3'
     }
 
     stages {
 
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Aryan-jaiswa/2023MavenWebAppPipleineWithAnsible'
+                deleteDir()   // 🔥 THIS FIXES EVERYTHING
+                git branch: 'master', url: ''
             }
         }
 
@@ -24,17 +24,11 @@ pipeline {
             }
         }
 
-        // ✅ DEBUG STAGE ADDED HERE
         stage('Debug') {
             steps {
                 sh 'pwd'
                 sh 'ls -l target'
-            }
-        }
-
-        stage('Archive') {
-            steps {
-                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
+                sh 'cat playbook.yml'   // 🔥 SEE WHICH PLAYBOOK IS USED
             }
         }
 
