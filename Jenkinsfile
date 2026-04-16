@@ -12,11 +12,11 @@ pipeline {
     stages {
 
         stage('Checkout') {
-            steps {
-                deleteDir()   // 🔥 THIS FIXES EVERYTHING
-                git branch: 'master', url: 'https://github.com/Aryan-jaiswa/2023MavenWebAppPipleineWithAnsible'
-            }
-        }
+    steps {
+        deleteDir()
+        git branch: 'main', url: 'https://github.com/Aryan-jaiswa/2023MavenWebAppPipleineWithAnsible.git'
+    }
+}
 
         stage('Build') {
             steps {
